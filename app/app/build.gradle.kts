@@ -27,12 +27,12 @@ android {
 
     compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
-        applicationId = "de.mm20.launcher2"
+        applicationId = "ir.mostafa.launcher"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         @SuppressLint("HighAppVersionCode")
         versionCode = System.getenv("VERSION_CODE_OVERRIDE")?.toIntOrNull() ?: 2024090300
-        versionName = "1.33.1"
+        versionName = "1.0.0"
         signingConfig = signingConfigs.getByName("debug")
     }
 

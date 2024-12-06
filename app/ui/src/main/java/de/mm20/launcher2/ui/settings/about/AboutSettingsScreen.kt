@@ -41,30 +41,30 @@ fun AboutSettingsScreen() {
                 var easterEggCounter by remember { mutableStateOf(0) }
                 Preference(
                     title = stringResource(R.string.preference_version),
-                    summary = appVersion,
+                    summary = "1.0.0",
                     onClick = {
-                        when(easterEggCounter) {
-                            3 -> Toast.makeText(context, context.getString(R.string.easter_egg_1), Toast.LENGTH_SHORT).show()
-                            7 -> Toast.makeText(context, context.getString(R.string.easter_egg_2), Toast.LENGTH_SHORT).show()
-                            11 -> Toast.makeText(context, context.getString(R.string.easter_egg_3), Toast.LENGTH_SHORT).show()
-                        }
-                        easterEggCounter++
-                        if (easterEggCounter >= 14) {
-                            navController?.navigate("settings/about/easteregg")
-                            easterEggCounter = 0
-                        }
+//                        when(easterEggCounter) {
+//                            3 -> Toast.makeText(context, context.getString(R.string.easter_egg_1), Toast.LENGTH_SHORT).show()
+//                            7 -> Toast.makeText(context, context.getString(R.string.easter_egg_2), Toast.LENGTH_SHORT).show()
+//                            11 -> Toast.makeText(context, context.getString(R.string.easter_egg_3), Toast.LENGTH_SHORT).show()
+//                        }
+//                        easterEggCounter++
+//                        if (easterEggCounter >= 14) {
+//                            navController?.navigate("settings/about/easteregg")
+//                            easterEggCounter = 0
+//                        }
                     }
                 )
                 Preference(
-                    title = stringResource(R.string.preference_screen_buildinfo),
-                    summary = stringResource(R.string.preference_screen_buildinfo_summary),
+                    title = "About developer",
+                    summary = "This app developed by Mostafa Ashrafi from fall 2023 to winter of 2024",
                     onClick = {
-                        navController?.navigate("settings/about/buildinfo")
+//                        navController?.navigate("settings/about/buildinfo")
                     }
                 )
             }
         }
-        item {
+/*        item {
             PreferenceCategory(title = stringResource(id = R.string.preference_category_license)) {
                 Preference(
                     icon = Icons.Rounded.Info,
@@ -123,6 +123,6 @@ fun AboutSettingsScreen() {
                     )
                 }
             }
-        }
+        }*/
     }
 }

@@ -511,7 +511,7 @@ fun PullDownScaffold(
                                 if (actions.isEmpty()) 0.dp else 48.dp
                             )
                             val windowInsets = WindowInsets.safeDrawing.asPaddingValues()
-                            SearchColumn(
+                            SearchColumn(  
                                 modifier = Modifier
                                     .graphicsLayer {
                                         val progress =

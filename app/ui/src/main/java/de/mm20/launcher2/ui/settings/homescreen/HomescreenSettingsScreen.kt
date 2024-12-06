@@ -69,18 +69,18 @@ fun HomescreenSettingsScreen() {
     val chargingAnimation by viewModel.chargingAnimation.collectAsStateWithLifecycle(null)
 
     PreferenceScreen(title = stringResource(id = R.string.preference_screen_homescreen)) {
-        item {
-            PreferenceCategory {
-                SwitchPreference(
-                    title = stringResource(R.string.preference_layout_fixed_rotation),
-                    summary = stringResource(R.string.preference_layout_fixed_rotation_summary),
-                    value = fixedRotation == true,
-                    onValueChanged = {
-                        viewModel.setFixedRotation(it)
-                    },
-                )
-            }
-        }
+//        item {
+//            PreferenceCategory {
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_layout_fixed_rotation),
+//                    summary = stringResource(R.string.preference_layout_fixed_rotation_summary),
+//                    value = fixedRotation == true,
+//                    onValueChanged = {
+//                        viewModel.setFixedRotation(it)
+//                    },
+//                )
+//            }
+//        }
         item {
             PreferenceCategory(stringResource(R.string.preference_clockwidget_favorites_part)) {
                 SwitchPreference(
@@ -97,13 +97,13 @@ fun HomescreenSettingsScreen() {
             PreferenceCategory(
                 title = stringResource(id = R.string.preference_category_widgets)
             ) {
-                Preference(
-                    title = stringResource(R.string.preference_screen_clockwidget),
-                    summary = stringResource(R.string.preference_screen_clockwidget_summary),
-                    onClick = {
-                        viewModel.showClockWidgetSheet = true
-                    }
-                )
+//                Preference(
+//                    title = stringResource(R.string.preference_screen_clockwidget),
+//                    summary = stringResource(R.string.preference_screen_clockwidget_summary),
+//                    onClick = {
+//                        viewModel.showClockWidgetSheet = true
+//                    }
+//                )
                 SwitchPreference(
                     title = stringResource(id = R.string.preference_edit_button),
                     summary = stringResource(id = R.string.preference_widgets_edit_button_summary),
@@ -114,52 +114,52 @@ fun HomescreenSettingsScreen() {
             }
 
         }
-        item {
-            PreferenceCategory(stringResource(R.string.preference_category_searchbar)) {
-                SearchBarStylePreference(
-                    title = stringResource(R.string.preference_search_bar_style),
-                    summary = stringResource(R.string.preference_search_bar_style_summary),
-                    value = searchBarStyle,
-                    onValueChanged = {
-                        viewModel.setSearchBarStyle(it)
-                    }
-                )
-                AnimatedVisibility(searchBarStyle == SearchBarStyle.Transparent) {
-                    ListPreference(
-                        title = stringResource(R.string.preference_search_bar_color),
-                        value = searchBarColor,
-                        items = listOf(
-                            stringResource(R.string.preference_system_bar_icons_auto) to SearchBarColors.Auto,
-                            stringResource(R.string.preference_system_bar_icons_light) to SearchBarColors.Light,
-                            stringResource(R.string.preference_system_bar_icons_dark) to SearchBarColors.Dark,
-                        ),
-                        onValueChanged = {
-                            if (it != null) viewModel.setSearchBarColor(it)
-                        }
-                    )
-                }
-
-                ListPreference(
-                    title = stringResource(R.string.preference_layout_search_bar_position),
-                    items = listOf(
-                        stringResource(R.string.search_bar_position_top) to false,
-                        stringResource(R.string.search_bar_position_bottom) to true,
-                    ),
-                    value = bottomSearchBar,
-                    onValueChanged = {
-                        if (it != null) viewModel.setBottomSearchBar(it)
-                    },
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_layout_fixed_search_bar),
-                    summary = stringResource(R.string.preference_layout_fixed_search_bar_summary),
-                    value = fixedSearchBar == true,
-                    onValueChanged = {
-                        viewModel.setFixedSearchBar(it)
-                    },
-                )
-            }
-        }
+//        item {
+//            PreferenceCategory(stringResource(R.string.preference_category_searchbar)) {
+//                SearchBarStylePreference(
+//                    title = stringResource(R.string.preference_search_bar_style),
+//                    summary = stringResource(R.string.preference_search_bar_style_summary),
+//                    value = searchBarStyle,
+//                    onValueChanged = {
+//                        viewModel.setSearchBarStyle(it)
+//                    }
+//                )
+//                AnimatedVisibility(searchBarStyle == SearchBarStyle.Transparent) {
+//                    ListPreference(
+//                        title = stringResource(R.string.preference_search_bar_color),
+//                        value = searchBarColor,
+//                        items = listOf(
+//                            stringResource(R.string.preference_system_bar_icons_auto) to SearchBarColors.Auto,
+//                            stringResource(R.string.preference_system_bar_icons_light) to SearchBarColors.Light,
+//                            stringResource(R.string.preference_system_bar_icons_dark) to SearchBarColors.Dark,
+//                        ),
+//                        onValueChanged = {
+//                            if (it != null) viewModel.setSearchBarColor(it)
+//                        }
+//                    )
+//                }
+//
+//                ListPreference(
+//                    title = stringResource(R.string.preference_layout_search_bar_position),
+//                    items = listOf(
+//                        stringResource(R.string.search_bar_position_top) to false,
+//                        stringResource(R.string.search_bar_position_bottom) to true,
+//                    ),
+//                    value = bottomSearchBar,
+//                    onValueChanged = {
+//                        if (it != null) viewModel.setBottomSearchBar(it)
+//                    },
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_layout_fixed_search_bar),
+//                    summary = stringResource(R.string.preference_layout_fixed_search_bar_summary),
+//                    value = fixedSearchBar == true,
+//                    onValueChanged = {
+//                        viewModel.setFixedSearchBar(it)
+//                    },
+//                )
+//            }
+//        }
         item {
             PreferenceCategory(stringResource(id = R.string.preference_category_wallpaper)) {
                 Preference(
@@ -169,39 +169,39 @@ fun HomescreenSettingsScreen() {
                         viewModel.openWallpaperChooser(context as AppCompatActivity)
                     }
                 )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_dim_wallpaper),
-                    summary = stringResource(R.string.preference_dim_wallpaper_summary),
-                    value = dimWallpaper,
-                    onValueChanged = {
-                        viewModel.setDimWallpaper(it)
-                    }
-                )
-                val isBlurSupported = remember { viewModel.isBlurAvailable(context) }
-                SwitchPreference(
-                    title = stringResource(R.string.preference_blur_wallpaper),
-                    summary = stringResource(
-                        if (isBlurSupported) R.string.preference_blur_wallpaper_summary
-                        else R.string.preference_blur_wallpaper_unsupported
-                    ),
-                    value = blurWallpaper && isBlurSupported,
-                    onValueChanged = {
-                        viewModel.setBlurWallpaper(it)
-                    },
-                    enabled = isBlurSupported
-                )
-                AnimatedVisibility(blurWallpaper && isBlurSupported) {
-                    SliderPreference(
-                        title = stringResource(R.string.preference_blur_wallpaper_radius),
-                        value = blurWallpaperRadius,
-                        onValueChanged = {
-                            viewModel.setBlurWallpaperRadius(it)
-                        },
-                        min = 4,
-                        max = 64,
-                        step = 4,
-                    )
-                }
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_dim_wallpaper),
+//                    summary = stringResource(R.string.preference_dim_wallpaper_summary),
+//                    value = dimWallpaper,
+//                    onValueChanged = {
+//                        viewModel.setDimWallpaper(it)
+//                    }
+//                )
+//                val isBlurSupported = remember { viewModel.isBlurAvailable(context) }
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_blur_wallpaper),
+//                    summary = stringResource(
+//                        if (isBlurSupported) R.string.preference_blur_wallpaper_summary
+//                        else R.string.preference_blur_wallpaper_unsupported
+//                    ),
+//                    value = blurWallpaper && isBlurSupported,
+//                    onValueChanged = {
+//                        viewModel.setBlurWallpaper(it)
+//                    },
+//                    enabled = isBlurSupported
+//                )
+//                AnimatedVisibility(blurWallpaper && isBlurSupported) {
+//                    SliderPreference(
+//                        title = stringResource(R.string.preference_blur_wallpaper_radius),
+//                        value = blurWallpaperRadius,
+//                        onValueChanged = {
+//                            viewModel.setBlurWallpaperRadius(it)
+//                        },
+//                        min = 4,
+//                        max = 64,
+//                        step = 4,
+//                    )
+//                }
             }
         }
         item {

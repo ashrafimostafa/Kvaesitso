@@ -51,14 +51,14 @@ fun MainSettingsScreen() {
                         navController?.navigate("settings/icons")
                     }
                 )
-                Preference(
-                    icon = Icons.Rounded.Search,
-                    title = stringResource(id = R.string.preference_screen_search),
-                    summary = stringResource(id = R.string.preference_screen_search_summary),
-                    onClick = {
-                        navController?.navigate("settings/search")
-                    }
-                )
+//                Preference(
+//                    icon = Icons.Rounded.Search,
+//                    title = stringResource(id = R.string.preference_screen_search),
+//                    summary = stringResource(id = R.string.preference_screen_search_summary),
+//                    onClick = {
+//                        navController?.navigate("settings/search")
+//                    }
+//                )
                 Preference(
                     icon = Icons.Rounded.Gesture,
                     title = stringResource(id = R.string.preference_screen_gestures),
@@ -67,38 +67,38 @@ fun MainSettingsScreen() {
                         navController?.navigate("settings/gestures")
                     }
                 )
-                Preference(
-                    icon = Icons.Rounded.Power,
-                    title = stringResource(id = R.string.preference_screen_integrations),
-                    summary = stringResource(id = R.string.preference_screen_integrations_summary),
-                    onClick = {
-                        navController?.navigate("settings/integrations")
-                    }
-                )
-                Preference(
-                    icon = Icons.Rounded.Extension,
-                    title = stringResource(id = R.string.preference_screen_plugins),
-                    summary = stringResource(id = R.string.preference_screen_plugins_summary),
-                    onClick = {
-                        navController?.navigate("settings/plugins")
-                    }
-                )
-                Preference(
-                    icon = Icons.Rounded.SettingsBackupRestore,
-                    title = stringResource(id = R.string.preference_screen_backup),
-                    summary = stringResource(id = R.string.preference_screen_backup_summary),
-                    onClick = {
-                        navController?.navigate("settings/backup")
-                    }
-                )
-                Preference(
-                    icon = Icons.Rounded.BugReport,
-                    title = stringResource(id = R.string.preference_screen_debug),
-                    summary = stringResource(id = R.string.preference_screen_debug_summary),
-                    onClick = {
-                        navController?.navigate("settings/debug")
-                    }
-                )
+//                Preference(
+//                    icon = Icons.Rounded.Power,
+//                    title = stringResource(id = R.string.preference_screen_integrations),
+//                    summary = stringResource(id = R.string.preference_screen_integrations_summary),
+//                    onClick = {
+//                        navController?.navigate("settings/integrations")
+//                    }
+//                )
+//                Preference(
+//                    icon = Icons.Rounded.Extension,
+//                    title = stringResource(id = R.string.preference_screen_plugins),
+//                    summary = stringResource(id = R.string.preference_screen_plugins_summary),
+//                    onClick = {
+//                        navController?.navigate("settings/plugins")
+//                    }
+//                )
+//                Preference(
+//                    icon = Icons.Rounded.SettingsBackupRestore,
+//                    title = stringResource(id = R.string.preference_screen_backup),
+//                    summary = stringResource(id = R.string.preference_screen_backup_summary),
+//                    onClick = {
+//                        navController?.navigate("settings/backup")
+//                    }
+//                )
+//                Preference(
+//                    icon = Icons.Rounded.BugReport,
+//                    title = stringResource(id = R.string.preference_screen_debug),
+//                    summary = stringResource(id = R.string.preference_screen_debug_summary),
+//                    onClick = {
+//                        navController?.navigate("settings/debug")
+//                    }
+//                )
                 Preference(
                     icon = Icons.Rounded.Info,
                     title = stringResource(id = R.string.preference_screen_about),

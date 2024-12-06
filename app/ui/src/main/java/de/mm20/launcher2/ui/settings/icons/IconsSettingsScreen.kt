@@ -160,107 +160,107 @@ fun IconsSettingsScreen() {
                         viewModel.setIconShape(it)
                     }
                 )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_enforce_icon_shape),
-                    summary = stringResource(R.string.preference_enforce_icon_shape_summary),
-                    value = icons?.adaptify == true,
-                    onValueChanged = {
-                        viewModel.setAdaptifyLegacyIcons(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_themed_icons),
-                    summary = stringResource(R.string.preference_themed_icons_summary),
-                    value = icons?.themedIcons == true,
-                    onValueChanged = {
-                        viewModel.setThemedIcons(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_force_themed_icons),
-                    summary = stringResource(R.string.preference_force_themed_icons_summary),
-                    value = icons?.forceThemed == true,
-                    enabled = icons?.themedIcons == true,
-                    onValueChanged = {
-                        viewModel.setForceThemedIcons(it)
-                    }
-                )
-                val iconPack by remember {
-                    derivedStateOf { installedIconPacks.firstOrNull { it.packageName == icons?.iconPack } }
-                }
-                val items = installedIconPacks.map {
-                    it.name to it
-                }
-                Preference(
-                    title = stringResource(R.string.preference_icon_pack),
-                    summary = if (items.size <= 1) {
-                        stringResource(R.string.preference_icon_pack_summary_empty)
-                    } else {
-                        iconPack?.name ?: "System"
-                    },
-                    enabled = installedIconPacks.size > 1,
-                    onClick = {
-                        showIconPackSheet = true
-                    },
-                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_enforce_icon_shape),
+//                    summary = stringResource(R.string.preference_enforce_icon_shape_summary),
+//                    value = icons?.adaptify == true,
+//                    onValueChanged = {
+//                        viewModel.setAdaptifyLegacyIcons(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_themed_icons),
+//                    summary = stringResource(R.string.preference_themed_icons_summary),
+//                    value = icons?.themedIcons == true,
+//                    onValueChanged = {
+//                        viewModel.setThemedIcons(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_force_themed_icons),
+//                    summary = stringResource(R.string.preference_force_themed_icons_summary),
+//                    value = icons?.forceThemed == true,
+//                    enabled = icons?.themedIcons == true,
+//                    onValueChanged = {
+//                        viewModel.setForceThemedIcons(it)
+//                    }
+//                )
+//                val iconPack by remember {
+//                    derivedStateOf { installedIconPacks.firstOrNull { it.packageName == icons?.iconPack } }
+//                }
+//                val items = installedIconPacks.map {
+//                    it.name to it
+//                }
+//                Preference(
+//                    title = stringResource(R.string.preference_icon_pack),
+//                    summary = if (items.size <= 1) {
+//                        stringResource(R.string.preference_icon_pack_summary_empty)
+//                    } else {
+//                        iconPack?.name ?: "System"
+//                    },
+//                    enabled = installedIconPacks.size > 1,
+//                    onClick = {
+//                        showIconPackSheet = true
+//                    },
+//                )
             }
         }
-        item {
-            PreferenceCategory(
-                title = stringResource(R.string.preference_category_badges),
-            ) {
-                AnimatedVisibility(hasNotificationsPermission == false) {
-                    MissingPermissionBanner(
-                        text = stringResource(R.string.missing_permission_notification_badges),
-                        onClick = {
-                            viewModel.requestNotificationsPermission(context as AppCompatActivity)
-                        },
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
-                SwitchPreference(
-                    title = stringResource(R.string.preference_notification_badges),
-                    summary = stringResource(R.string.preference_notification_badges_summary),
-                    enabled = hasNotificationsPermission != false,
-                    value = notificationBadges == true && hasNotificationsPermission == true,
-                    onValueChanged = {
-                        viewModel.setNotifications(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_cloud_badges),
-                    summary = stringResource(R.string.preference_cloud_badges_summary),
-                    value = cloudFileBadges == true,
-                    onValueChanged = {
-                        viewModel.setCloudFiles(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_suspended_badges),
-                    summary = stringResource(R.string.preference_suspended_badges_summary),
-                    value = suspendedAppBadges == true,
-                    onValueChanged = {
-                        viewModel.setSuspendedApps(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_shortcut_badges),
-                    summary = stringResource(R.string.preference_shortcut_badges_summary),
-                    value = shortcutBadges == true,
-                    onValueChanged = {
-                        viewModel.setShortcuts(it)
-                    }
-                )
-                SwitchPreference(
-                    title = stringResource(R.string.preference_plugin_badges),
-                    summary = stringResource(R.string.preference_plugin_badges_summary),
-                    value = pluginBadges == true,
-                    onValueChanged = {
-                        viewModel.setPluginBadges(it)
-                    }
-                )
-            }
-        }
+//        item {
+//            PreferenceCategory(
+//                title = stringResource(R.string.preference_category_badges),
+//            ) {
+//                AnimatedVisibility(hasNotificationsPermission == false) {
+//                    MissingPermissionBanner(
+//                        text = stringResource(R.string.missing_permission_notification_badges),
+//                        onClick = {
+//                            viewModel.requestNotificationsPermission(context as AppCompatActivity)
+//                        },
+//                        modifier = Modifier.padding(16.dp)
+//                    )
+//                }
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_notification_badges),
+//                    summary = stringResource(R.string.preference_notification_badges_summary),
+//                    enabled = hasNotificationsPermission != false,
+//                    value = notificationBadges == true && hasNotificationsPermission == true,
+//                    onValueChanged = {
+//                        viewModel.setNotifications(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_cloud_badges),
+//                    summary = stringResource(R.string.preference_cloud_badges_summary),
+//                    value = cloudFileBadges == true,
+//                    onValueChanged = {
+//                        viewModel.setCloudFiles(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_suspended_badges),
+//                    summary = stringResource(R.string.preference_suspended_badges_summary),
+//                    value = suspendedAppBadges == true,
+//                    onValueChanged = {
+//                        viewModel.setSuspendedApps(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_shortcut_badges),
+//                    summary = stringResource(R.string.preference_shortcut_badges_summary),
+//                    value = shortcutBadges == true,
+//                    onValueChanged = {
+//                        viewModel.setShortcuts(it)
+//                    }
+//                )
+//                SwitchPreference(
+//                    title = stringResource(R.string.preference_plugin_badges),
+//                    summary = stringResource(R.string.preference_plugin_badges_summary),
+//                    value = pluginBadges == true,
+//                    onValueChanged = {
+//                        viewModel.setPluginBadges(it)
+//                    }
+//                )
+//            }
+//        }
     }
 
     if (showIconPackSheet) {

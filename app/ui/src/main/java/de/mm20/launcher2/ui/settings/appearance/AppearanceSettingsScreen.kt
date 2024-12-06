@@ -45,31 +45,31 @@ fun AppearanceSettingsScreen() {
                         viewModel.setColorScheme(newValue)
                     }
                 )
-                Preference(
-                    title = stringResource(id = R.string.preference_screen_colors),
-                    summary = themeName,
-                    onClick = {
-                        navController?.navigate("settings/appearance/themes")
-                    }
-                )
+//                Preference(
+//                    title = stringResource(id = R.string.preference_screen_colors),
+//                    summary = themeName,
+//                    onClick = {
+//                        navController?.navigate("settings/appearance/themes")
+//                    }
+//                )
                 val font by viewModel.font.collectAsState()
-                ListPreference(
-                    title = stringResource(R.string.preference_font),
-                    items = listOf(
-                        "Outfit" to Font.Outfit,
-                        stringResource(R.string.preference_font_system) to Font.System,
-                    ),
-                    value = font,
-                    onValueChanged = {
-                        if (it != null) viewModel.setFont(it)
-                    },
-                    itemLabel = {
-                        val typography = remember(it.value) {
-                            getTypography(context, it.value)
-                        }
-                        Text(it.first, style = typography.titleMedium)
-                    }
-                )
+//                ListPreference(
+//                    title = stringResource(R.string.preference_font),
+//                    items = listOf(
+//                        "Outfit" to Font.Outfit,
+//                        stringResource(R.string.preference_font_system) to Font.System,
+//                    ),
+//                    value = font,
+//                    onValueChanged = {
+//                        if (it != null) viewModel.setFont(it)
+//                    },
+//                    itemLabel = {
+//                        val typography = remember(it.value) {
+//                            getTypography(context, it.value)
+//                        }
+//                        Text(it.first, style = typography.titleMedium)
+//                    }
+//                )
 
                 Preference(
                     title = stringResource(R.string.preference_cards),
@@ -81,22 +81,22 @@ fun AppearanceSettingsScreen() {
             }
         }
 
-        if (isAtLeastApiLevel(31)) {
-            item {
-                PreferenceCategory(stringResource(R.string.preference_category_advanced)) {
-                    ListPreference(
-                        title = stringResource(R.string.preference_mdy_color_source),
-                        items = listOf(
-                            stringResource(R.string.preference_mdy_color_source_system) to false,
-                            stringResource(R.string.preference_mdy_color_source_wallpaper) to true,
-                        ),
-                        value = compatModeColors,
-                        onValueChanged = {
-                            viewModel.setCompatModeColors(it)
-                        }
-                    )
-                }
-            }
-        }
+//        if (isAtLeastApiLevel(31)) {
+//            item {
+//                PreferenceCategory(stringResource(R.string.preference_category_advanced)) {
+//                    ListPreference(
+//                        title = stringResource(R.string.preference_mdy_color_source),
+//                        items = listOf(
+//                            stringResource(R.string.preference_mdy_color_source_system) to false,
+//                            stringResource(R.string.preference_mdy_color_source_wallpaper) to true,
+//                        ),
+//                        value = compatModeColors,
+//                        onValueChanged = {
+//                            viewModel.setCompatModeColors(it)
+//                        }
+//                    )
+//                }
+//            }
+//        }
     }
 }

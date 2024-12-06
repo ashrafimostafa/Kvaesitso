@@ -60,39 +60,39 @@ fun RowScope.SearchBarMenu(
         )
     }
     DropdownMenu(expanded = showOverflowMenu, onDismissRequest = { showOverflowMenu = false }) {
-        DropdownMenuItem(
-            onClick = {
-                context.startActivity(
-                    Intent.createChooser(
-                        Intent(Intent.ACTION_SET_WALLPAPER),
-                        null
-                    )
-                )
-                showOverflowMenu = false
-            },
-            text = {
-                Text(stringResource(R.string.wallpaper))
-            },
-            leadingIcon = {
-                Icon(imageVector = Icons.Rounded.Wallpaper, contentDescription = null)
-            }
-        )
-        val editButton by widgetsVM.editButton.collectAsState()
-        val searchOpen by launcherVM.isSearchOpen
-        if (!searchOpen && editButton == false) {
-            DropdownMenuItem(
-                onClick = {
-                    launcherVM.setWidgetEditMode(editMode = true)
-                    showOverflowMenu = false
-                },
-                text = {
-                    Text(stringResource(R.string.menu_edit_widgets))
-                },
-                leadingIcon = {
-                    Icon(imageVector = Icons.Rounded.Edit, contentDescription = null)
-                }
-            )
-        }
+//        DropdownMenuItem(
+//            onClick = {
+//                context.startActivity(
+//                    Intent.createChooser(
+//                        Intent(Intent.ACTION_SET_WALLPAPER),
+//                        null
+//                    )
+//                )
+//                showOverflowMenu = false
+//            },
+//            text = {
+//                Text(stringResource(R.string.wallpaper))
+//            },
+//            leadingIcon = {
+//                Icon(imageVector = Icons.Rounded.Wallpaper, contentDescription = null)
+//            }
+//        )
+//        val editButton by widgetsVM.editButton.collectAsState()
+//        val searchOpen by launcherVM.isSearchOpen
+//        if (!searchOpen && editButton == false) {
+//            DropdownMenuItem(
+//                onClick = {
+//                    launcherVM.setWidgetEditMode(editMode = true)
+//                    showOverflowMenu = false
+//                },
+//                text = {
+//                    Text(stringResource(R.string.menu_edit_widgets))
+//                },
+//                leadingIcon = {
+//                    Icon(imageVector = Icons.Rounded.Edit, contentDescription = null)
+//                }
+//            )
+//        }
         DropdownMenuItem(
             onClick = {
                 context.startActivity(Intent(context, SettingsActivity::class.java))
@@ -105,26 +105,26 @@ fun RowScope.SearchBarMenu(
                 Icon(imageVector = Icons.Rounded.Settings, contentDescription = null)
             }
         )
-        val colorScheme = MaterialTheme.colorScheme
-        DropdownMenuItem(
-            onClick = {
-                CustomTabsIntent.Builder()
-                    .setDefaultColorSchemeParams(
-                        CustomTabColorSchemeParams.Builder()
-                            .setToolbarColor(colorScheme.primaryContainer.toArgb())
-                            .setSecondaryToolbarColor(colorScheme.secondaryContainer.toArgb())
-                            .build()
-                    )
-                    .build()
-                    .launchUrl(context, Uri.parse("https://kvaesitso.mm20.de/docs/user-guide"))
-                showOverflowMenu = false
-            },
-            text = {
-                Text(stringResource(R.string.help))
-            },
-            leadingIcon = {
-                Icon(imageVector = Icons.Rounded.HelpOutline, contentDescription = null)
-            }
-        )
+//        val colorScheme = MaterialTheme.colorScheme
+//        DropdownMenuItem(
+//            onClick = {
+//                CustomTabsIntent.Builder()
+//                    .setDefaultColorSchemeParams(
+//                        CustomTabColorSchemeParams.Builder()
+//                            .setToolbarColor(colorScheme.primaryContainer.toArgb())
+//                            .setSecondaryToolbarColor(colorScheme.secondaryContainer.toArgb())
+//                            .build()
+//                    )
+//                    .build()
+//                    .launchUrl(context, Uri.parse("https://kvaesitso.mm20.de/docs/user-guide"))
+//                showOverflowMenu = false
+//            },
+//            text = {
+//                Text(stringResource(R.string.help))
+//            },
+//            leadingIcon = {
+//                Icon(imageVector = Icons.Rounded.HelpOutline, contentDescription = null)
+//            }
+//        )
     }
 }
