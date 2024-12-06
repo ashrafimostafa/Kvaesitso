@@ -438,7 +438,7 @@ fun IconShapePreference(
                                             foregroundLayer = StaticIconLayer(
                                                 icon = ContextCompat.getDrawable(
                                                     context,
-                                                    R.mipmap.ic_launcher_foreground
+                                                    R.mipmap.ic_launcher
                                                 )!!,
                                                 scale = 1.5f,
                                             ),
