@@ -1,2 +1,2 @@
--keep class de.mm20.launcher2.wikipedia.** { *; }
+-keep class ir.mostafa.launcher.wikipedia.** { *; }
 -keep class kotlin.coroutines.Continuation

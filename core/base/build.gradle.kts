@@ -35,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "de.mm20.launcher2.base"
+    namespace = "ir.mostafa.launcher.base"
 }
 
 dependencies {

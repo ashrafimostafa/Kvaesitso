@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="de.mm20.launcher2.gservices.GoogleAuthRedirectActivity"
+            android:name="ir.mostafa.launcher.gservices.GoogleAuthRedirectActivity"
             android:theme="@style/GoogleSigninTheme"
             android:exported="true">
             <intent-filter>

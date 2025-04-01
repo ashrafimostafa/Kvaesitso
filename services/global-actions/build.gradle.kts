@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "de.mm20.launcher2.globalactions"
+    namespace = "ir.mostafa.launcher.globalactions"
 }
 
 dependencies {

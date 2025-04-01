@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "de.mm20.launcher2.lib.materialcolorutilities"
+    namespace = "ir.mostafa.launcher.lib.materialcolorutilities"
 }
 
 dependencies {

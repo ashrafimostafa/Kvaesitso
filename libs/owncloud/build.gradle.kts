@@ -34,7 +34,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    namespace = "de.mm20.launcher2.owncloud"
+    namespace = "ir.mostafa.launcher.owncloud"
 }
 
 dependencies {

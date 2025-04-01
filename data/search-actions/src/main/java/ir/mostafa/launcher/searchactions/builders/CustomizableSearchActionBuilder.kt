@@ -1,0 +1,3 @@
+package ir.mostafa.launcher.searchactions.builders
+
+sealed interface CustomizableSearchActionBuilder: SearchActionBuilder

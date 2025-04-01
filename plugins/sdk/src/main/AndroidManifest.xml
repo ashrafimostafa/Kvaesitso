@@ -5,7 +5,7 @@
             android:exported="true"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar.MinWidth">
             <intent-filter>
-                <action android:name="de.mm20.launcher2.plugin.REQUEST_PERMISSION" />
+                <action android:name="ir.mostafa.launcher.plugin.REQUEST_PERMISSION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

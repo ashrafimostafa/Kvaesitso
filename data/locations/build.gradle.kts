@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "de.mm20.launcher2.openstreetmaps"
+    namespace = "ir.mostafa.launcher.openstreetmaps"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {

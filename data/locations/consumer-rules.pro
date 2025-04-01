@@ -1,2 +1,2 @@
--keep class de.mm20.launcher2.locations.** { *; }
+-keep class ir.mostafa.launcher.locations.** { *; }
 -keep class kotlin.coroutines.Continuation

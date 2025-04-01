@@ -62,7 +62,7 @@ android {
     lint {
         abortOnError = false
     }
-    namespace = "de.mm20.launcher2.ui"
+    namespace = "ir.mostafa.launcher.ui"
 }
 
 dependencies {

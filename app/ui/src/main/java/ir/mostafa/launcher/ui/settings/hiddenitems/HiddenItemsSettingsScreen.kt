@@ -1,0 +1,291 @@
+package ir.mostafa.launcher.ui.settings.hiddenitems
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Visibility
+import androidx.compose.material.icons.rounded.VisibilityOff
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import ir.mostafa.launcher.icons.LauncherIcon
+import ir.mostafa.launcher.search.Application
+import ir.mostafa.launcher.search.CalendarEvent
+import ir.mostafa.launcher.search.SavableSearchable
+import ir.mostafa.launcher.searchable.VisibilityLevel
+import ir.mostafa.launcher.ui.R
+import ir.mostafa.launcher.ui.component.ShapedLauncherIcon
+import ir.mostafa.launcher.ui.component.preferences.PreferenceCategory
+import ir.mostafa.launcher.ui.component.preferences.PreferenceScreen
+import ir.mostafa.launcher.ui.component.preferences.SwitchPreference
+
+@Composable
+fun HiddenItemsSettingsScreen() {
+    val viewModel: HiddenItemsSettingsScreenVM = viewModel()
+
+    val density = LocalDensity.current
+
+    val apps by viewModel.allApps.collectAsState()
+    val other by viewModel.hiddenItems.collectAsState()
+
+    val showButton by viewModel.hiddenItemsButton.collectAsState()
+
+    PreferenceScreen(title = stringResource(R.string.preference_hidden_items)) {
+        item {
+            PreferenceCategory {
+                SwitchPreference(
+                    title = stringResource(R.string.preference_hidden_items_reveal_button),
+                    summary = stringResource(R.string.preference_hidden_items_reveal_button_summary),
+                    value = showButton,
+                    onValueChanged = { viewModel.setHiddenItemsButton(it) }
+                )
+            }
+        }
+        items(apps, key = { it.key }) { searchable ->
+            val icon by remember(searchable.key) {
+                viewModel.getIcon(searchable, with(density) { 32.dp.roundToPx() })
+            }.collectAsState(null)
+
+            val visibility by remember(searchable.key) {
+                viewModel.getVisibility(searchable)
+            }.collectAsState(null)
+
+            var showDropdown by remember { mutableStateOf(false) }
+
+            Box {
+                HiddenItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            if (searchable is Application || searchable is CalendarEvent) {
+                                showDropdown = true
+                            } else {
+                                if (visibility == null) return@clickable
+                                viewModel.setVisibility(
+                                    searchable,
+                                    if (visibility == VisibilityLevel.Default) VisibilityLevel.Hidden else VisibilityLevel.Default
+                                )
+                            }
+                        },
+                    icon = icon,
+                    label = searchable.label,
+                    visibility = visibility,
+                )
+                VisibilityDropdown(
+                    expanded = showDropdown,
+                    onDismissRequest = { showDropdown = false },
+                    item = searchable,
+                    value = visibility,
+                    onValueChanged = {
+                        viewModel.setVisibility(searchable, it)
+                        showDropdown = false
+                    }
+                )
+            }
+        }
+
+        item {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(0.5.dp)
+                    .background(
+                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
+                    )
+            )
+        }
+
+        items(other, key = { it.key }) { searchable ->
+            val icon by remember(searchable.key) {
+                viewModel.getIcon(searchable, with(density) { 32.dp.roundToPx() })
+            }.collectAsState(null)
+
+            val visibility by remember(searchable.key) {
+                viewModel.getVisibility(searchable)
+            }.collectAsState(null)
+
+            var showDropdown by remember { mutableStateOf(false) }
+
+            Box {
+                HiddenItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            if (searchable is Application || searchable is CalendarEvent) {
+                                showDropdown = true
+                            } else {
+                                if (visibility == null) return@clickable
+                                viewModel.setVisibility(
+                                    searchable,
+                                    if (visibility == VisibilityLevel.Default) VisibilityLevel.Hidden else VisibilityLevel.Default
+                                )
+                            }
+                        },
+                    icon = icon,
+                    label = searchable.label,
+                    visibility = visibility,
+                )
+                VisibilityDropdown(
+                    expanded = showDropdown,
+                    onDismissRequest = { showDropdown = false },
+                    item = searchable,
+                    value = visibility,
+                    onValueChanged = {
+                        viewModel.setVisibility(searchable, it)
+                        showDropdown = false
+                    }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun VisibilityDropdown(
+    expanded: Boolean,
+    onDismissRequest: () -> Unit,
+    item: SavableSearchable,
+    value: VisibilityLevel?,
+    onValueChanged: (VisibilityLevel) -> Unit,
+) {
+    DropdownMenu(expanded = expanded, onDismissRequest = onDismissRequest) {
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Visibility,
+                    contentDescription = null
+                )
+            },
+            text = {
+                Text(
+                    when (item) {
+                        is Application -> stringResource(R.string.item_visibility_app_default)
+                        is CalendarEvent -> stringResource(R.string.item_visibility_calendar_default)
+                        else -> stringResource(R.string.item_visibility_search_only)
+                    }
+                )
+            },
+            onClick = {
+                onValueChanged(VisibilityLevel.Default)
+            },
+            trailingIcon = {
+                if (value == VisibilityLevel.Default) {
+                    Icon(
+                        imageVector = Icons.Rounded.Check,
+                        tint = MaterialTheme.colorScheme.primary,
+                        contentDescription = null
+                    )
+                }
+            }
+        )
+        if (item is Application || item is CalendarEvent) {
+            DropdownMenuItem(
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Outlined.Visibility,
+                        contentDescription = null
+                    )
+                },
+                text = {
+                    Text(stringResource(R.string.item_visibility_search_only))
+                },
+                onClick = {
+                    onValueChanged(VisibilityLevel.SearchOnly)
+                },
+                trailingIcon = {
+                    if (value == VisibilityLevel.SearchOnly) {
+                        Icon(
+                            imageVector = Icons.Rounded.Check,
+                            tint = MaterialTheme.colorScheme.primary,
+                            contentDescription = null
+                        )
+                    }
+                }
+            )
+        }
+        DropdownMenuItem(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.VisibilityOff,
+                    contentDescription = null
+                )
+            },
+            text = {
+                Text(stringResource(R.string.item_visibility_hidden))
+            },
+            onClick = {
+                onValueChanged(VisibilityLevel.Hidden)
+            },
+            trailingIcon = {
+                if (value == VisibilityLevel.Hidden) {
+                    Icon(
+                        imageVector = Icons.Rounded.Check,
+                        tint = MaterialTheme.colorScheme.primary,
+                        contentDescription = null
+                    )
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun HiddenItem(
+    modifier: Modifier,
+    icon: LauncherIcon?,
+    label: String,
+    visibility: VisibilityLevel?,
+) {
+    Row(
+        modifier = modifier
+            .padding(vertical = 12.dp, horizontal = 20.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        ShapedLauncherIcon(
+            size = 32.dp,
+            icon = { icon },
+            modifier = Modifier.padding(end = 20.dp)
+        )
+        Text(
+            label,
+            modifier = Modifier.weight(1f, fill = true),
+            style = MaterialTheme.typography.titleMedium
+        )
+        if (visibility != null) {
+            Icon(
+                modifier = Modifier.alpha(if (visibility == VisibilityLevel.Hidden) 0.3f else 1f),
+                imageVector = when (visibility) {
+                    VisibilityLevel.Hidden -> Icons.Rounded.VisibilityOff
+                    VisibilityLevel.Default -> Icons.Rounded.Visibility
+                    VisibilityLevel.SearchOnly -> Icons.Outlined.Visibility
+                },
+                tint = if (visibility == VisibilityLevel.Default) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.onSurfaceVariant,
+                contentDescription = null
+            )
+        }
+    }
+}

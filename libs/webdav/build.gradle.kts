@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "de.mm20.launcher2.webdav"
+    namespace = "ir.mostafa.launcher.webdav"
 }
 
 dependencies {

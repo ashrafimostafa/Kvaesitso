@@ -8,8 +8,8 @@
         android:shortcutShortLabel="@string/search_bar_placeholder">
         <intent
             android:action="android.intent.action.ASSIST"
-            android:targetClass="de.mm20.launcher2.ui.assistant.AssistantActivity"
-            android:targetPackage="de.mm20.launcher2.release" />
+            android:targetClass="ir.mostafa.launcher.ui.assistant.AssistantActivity"
+            android:targetPackage="ir.mostafa.launcher.release" />
     </shortcut>
 
 </shortcuts>

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "de.mm20.launcher2.location"
+    namespace = "ir.mostafa.launcher.location"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {

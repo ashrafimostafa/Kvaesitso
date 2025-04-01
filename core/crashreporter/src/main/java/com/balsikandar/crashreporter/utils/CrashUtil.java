@@ -28,7 +28,7 @@ import java.util.Locale;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import de.mm20.launcher2.crashreporter.R;
+import ir.mostafa.launcher.crashreporter.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.balsikandar.crashreporter.utils.Constants.CHANNEL_NOTIFICATION_ID;
@@ -118,8 +118,8 @@ public class CrashUtil {
             String filePath = new File(getDefaultPath(), fileName).getAbsolutePath();
 
             Intent intent = new Intent();
-            intent.setComponent(new ComponentName(context.getPackageName(), "de.mm20.launcher2.ui.settings.SettingsActivity"));
-            intent.putExtra("de.mm20.launcher2.settings.ROUTE", "settings/debug/crashreporter/report?fileName=" + URLEncoder.encode(filePath, "utf8"));
+            intent.setComponent(new ComponentName(context.getPackageName(), "ir.mostafa.launcher.ui.settings.SettingsActivity"));
+            intent.putExtra("ir.mostafa.launcher.settings.ROUTE", "settings/debug/crashreporter/report?fileName=" + URLEncoder.encode(filePath, "utf8"));
             intent.setAction(Long.toString(System.currentTimeMillis()));
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);

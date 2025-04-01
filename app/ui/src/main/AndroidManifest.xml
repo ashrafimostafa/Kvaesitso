@@ -54,7 +54,7 @@
             android:label="@string/settings"
             android:launchMode="singleTop"
             android:parentActivityName=".launcher.LauncherActivity"
-            android:taskAffinity="de.mm20.launcher2.settings"
+            android:taskAffinity="ir.mostafa.launcher.settings"
             android:theme="@style/SettingsTheme.NoActionBar"
             android:enableOnBackInvokedCallback="true"
             >
@@ -64,7 +64,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.mm20.launcher2.ui.launcher.LauncherActivity" />
+                android:value="ir.mostafa.launcher.ui.launcher.LauncherActivity" />
 
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -73,7 +73,7 @@
                 <data android:scheme="https"/>
                 <data android:path="/in-app"/>
                 <data android:path="/in-app.html"/>
-                <data android:host="kvaesitso.mm20.de"/>
+                <data android:host="mostafa.launcher.ir"/>
             </intent-filter>
         </activity>
 
@@ -87,7 +87,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="application/vnd.de.mm20.launcher2.theme" />
+                <data android:mimeType="application/vnd.ir.mostafa.launcher.theme" />
             </intent-filter>
         </activity>
     </application>

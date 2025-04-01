@@ -1,7 +1,7 @@
--keepclassmembers class de.mm20.launcher2.preferences.LegacySettings {
+-keepclassmembers class ir.mostafa.launcher.preferences.LegacySettings {
     <fields>;
 }
 
--keepclassmembers class de.mm20.launcher2.preferences.LegacySettings$* {
+-keepclassmembers class ir.mostafa.launcher.preferences.LegacySettings$* {
     <fields>;
 }
